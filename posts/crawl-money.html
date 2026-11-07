@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crawl money & fast pages: indexing + Core Web Vitals for ad revenue — AdCraft Blog</title>
+  <meta name="description" content="Traffic before RPM, RPM before earnings: Search Console routines, sitemap discipline and why every 100ms of LCP measurably cuts ad participation.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://runnerchhotu-maker.github.io/ads-blog/posts/crawl-money.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Crawl money & fast pages: indexing + Core Web Vitals for ad revenue">
+  <meta property="og:description" content="Why every 100ms of LCP costs you ad money — and the Search Console routines that get you indexed in days.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script defer src="../assets/js/ads.js"></script>
+  <script defer src="../assets/js/main.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Get indexed in days, not months: crawl money for small static sites",
+    "datePublished": "2026-10-28",
+    "dateModified": "2026-11-05",
+    "author": { "@type": "Organization", "name": "AdCraft Blog" },
+    "description": "Search Console routines, sitemap discipline and LCP economics for static blogs.",
+    "mainEntityOfPage": "https://runnerchhotu-maker.github.io/ads-blog/posts/crawl-money.html"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../index.html">Ad<span>Craft</span></a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="where-to-place-ads.html">Placements</a></li>
+          <li><a href="highest-paying-adsense-niches.html">Niches</a></li>
+          <li><a href="../about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap"><div class="ad-slot" data-slot="leaderboard" data-format="horizontal"></div></div>
+
+    <div class="wrap layout">
+      <article class="content">
+        <header class="article-header">
+          <span class="tag">SEO + Speed</span>
+          <h1>Crawl money, fast pages: indexing routines and the LCP-cost of slow ads</h1>
+          <p class="dek">Money math: a page that never gets indexed earns nothing; a page indexed but slow earns half of what the auction would have paid. Both are free to fix on a static site.</p>
+          <p class="meta"><time datetime="2026-10-28">Updated <time datetime="2026-11-05">Nov 5, 2026</time></time><span>7 min read</span></p>
+        </header>
+
+        <div class="prose">
+          <p>
+            Two commas decide your revenue: the one after 1,000 in your traffic
+            numbers, and the RPM after it. The first comma is about crawlers. The
+            second is about milliseconds. Handle them in that order.
+          </p>
+
+          <div class="ad-slot" data-slot="inArticleTop" data-format="in-article"></div>
+
+          <h2>Get indexed in days, not months</h2>
+          <ol>
+            <li><strong>Submit the sitemap</strong> in Search Console the same hour the site ships — this repo's <code>sitemap.xml</code> is already wired for that.</li>
+            <li><strong>Request indexing</strong> for any strong new URL via the URL Inspection tool. It's the single most underrated lever; a fresh personal site typically sees early impressions within 48–72 hours.</li>
+            <li><strong>Link new posts from the homepage</strong>. Every homepage link is a fresh crawl path — deep pages with no internal links starve.</li>
+            <li><strong>Publish on a schedule</strong>. Crawl patterns learn your cadence; weekly beats sporadic bursts.</li>
+          </ol>
+
+          <h2>Why every 100ms of LCP costs ad money</h2>
+          <p>
+            Auctions are timed. When the ad script requests units late — typically
+            because the main content blocked rendering — the number of advertisers
+            eligible in real-time bidding shrinks, and the clearing price drops. On
+            top of that, delayed layouts physically shift units off-screen and tank
+            the exact viewability metric priced into the auction.
+          </p>
+
+          <blockquote>
+            Static hosting removes the server hop, this theme inlines zero web fonts,
+            and every ad container reserves its height — so layout never jumps when
+            a creative loads.
+          </blockquote>
+
+          <div class="ad-slot" data-slot="inArticleMid" data-format="in-article"></div>
+
+          <h2>The built-in speed discipline in this repo</h2>
+          <ul>
+            <li><code>ads.js</code> initializes slots 300px <em>before</em> they enter the viewport — requests fire early, render never blocks text.</li>
+            <li>System font stack, no CSS framework: a post page ships ~10KB of styling.</li>
+            <li>GitHub Pages serves on a CDN with correct caching headers by default.</li>
+            <li><code>.nojekyll</code> skips (Jekyll) processing so every asset is byte-perfect.</li>
+          </ul>
+
+          <h2>Measure both commas weekly</h2>
+          <p>
+            Search Console for impressions and average position; PageSpeed Insights or
+            the Web Vitals extension for LCP/CLS/INP; the AdSense reports split by
+            unit for eCPM movement. One dashboard row per metric per week — that's the
+            entire growth loop for a display-revenue site.
+          </p>
+
+          <div class="ad-slot" data-slot="contentFooter" data-format="footer"></div>
+        </div>
+      </article>
+
+      <aside class="sidebar" aria-label="Sidebar">
+        <div class="sidebar-inner">
+          <div class="ad-slot" data-slot="sidebar" data-format="vertical"></div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="related wrap">
+      <h2>Related reads</h2>
+      <div class="post-grid">
+        <a class="card" href="where-to-place-ads.html">
+          <span class="tag">Placements</span>
+          <h3>The 7 ad placements that actually move RPM</h3>
+          <span class="meta">9 min read</span>
+        </a>
+        <a class="card" href="highest-paying-adsense-niches.html">
+          <span class="tag">Niches</span>
+          <h3>Highest-paying AdSense niches in 2026</h3>
+          <span class="meta">8 min read</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap"><p>© <span id="year">2026</span> AdCraft Blog · <a href="../privacy.html">Privacy &amp; Ads</a></p></div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,9 @@
+# robots.txt for the AdCraft Blog (GitHub Pages)
+User-agent: *
+Allow: /
+
+# Media asset crawlers that improve search presence
+User-agent: Mediapartners-Google
+Allow: /
+
+Sitemap: https://runnerchhotu-maker.github.io/ads-blog/sitemap.xml

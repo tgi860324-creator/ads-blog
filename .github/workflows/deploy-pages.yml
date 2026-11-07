@@ -1,0 +1,83 @@
+# Deploys this blog to GitHub Pages.
+#
+# Structure cloned from google/three-live's proven pages.yml
+# (https://github.com/google/three-live/actions/runs/42061953751):
+#   two jobs — build & upload artifact, then deploy-pages —
+#   permissions trio (contents read / pages write / id-token write),
+#   a "pages" concurrency group, a Pages-enabled guard that lets the
+#   build succeed with a notice when Pages isn't on yet, and every
+#   action pinned to the same commit SHAs that run used.
+
+name: Deploy Blog to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build-site:
+    name: Build & Assemble Static Site
+    runs-on: ubuntu-latest
+    outputs:
+      pages_enabled: ${{ steps.check_pages.outputs.enabled }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Assemble static site
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          rm -rf _site
+          mkdir -p _site
+          # Site payload: everything except CI plumbing and repo docs.
+          rsync -a --exclude '.github' --exclude 'README.md' --exclude '_site' ./ _site/
+          touch _site/.nojekyll
+          echo "--- _site contents ---"
+          find _site -maxdepth 2 -type f | head -40
+
+      - name: Check whether GitHub Pages is enabled for this repository
+        id: check_pages
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if gh api "repos/${GITHUB_REPOSITORY}/pages" >/dev/null 2>&1; then
+            echo "GitHub Pages is enabled."
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::GitHub Pages is not enabled yet (or the repository is still private). The site artifact was built successfully; enable Pages (Source: GitHub Actions) in Settings → Pages once the repo is public."
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Configure Pages
+        if: steps.check_pages.outputs.enabled == 'true'
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+
+      - name: Upload Pages artifact
+        if: steps.check_pages.outputs.enabled == 'true'
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+        with:
+          path: _site
+
+  deploy-site:
+    name: Deploy to GitHub Pages
+    if: needs.build-site.outputs.pages_enabled == 'true'
+    needs: build-site
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

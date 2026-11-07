@@ -1,0 +1,12 @@
+# ads.txt — IAB Authorized Sellers file. REQUIRED for Google AdSense.
+#
+# After AdSense approval, replace the line below with the exact entry from
+# AdSense → Account → Settings → ads.txt (or the organic copy from Google):
+#
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+#
+# The file MUST stay at the site root (GitHub Pages serves it at /ads.txt).
+# GitHub Pages always serves this file from your Pages deployment — no Jekyll
+# processing happens (the repo ships .nojekyll), so the text below is byte-exact.
+
+google.com, pub-REPLACE_ME, DIRECT, f08c47fec0942fa0
