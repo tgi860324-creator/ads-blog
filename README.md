@@ -103,7 +103,7 @@ Built-in protections that keep RPM high rather than eroding it:
 - Add a post: copy any file in `posts/`, update `<title>`, description,
   canonical, JSON-LD dates, and add it to `sitemap.xml`.
 - URLs are **absolute links** in canonical/sitemap; placeholder
-  `runnerchhotu-maker.github.io/ads-blog` appears in `index.html`, all posts, `robots.txt`,
+  `tgi860324-creator.github.io/ads-blog` appears in `index.html`, all posts, `robots.txt`,
   `sitemap.xml`, and page `<link rel=canonical>` — one find-and-replace after
   first deploy.
 - Styling lives in `assets/css/style.css` — zero build step.

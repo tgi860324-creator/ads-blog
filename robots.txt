@@ -6,4 +6,4 @@ Allow: /
 User-agent: Mediapartners-Google
 Allow: /
 
-Sitemap: https://runnerchhotu-maker.github.io/ads-blog/sitemap.xml
+Sitemap: https://tgi860324-creator.github.io/ads-blog/sitemap.xml
