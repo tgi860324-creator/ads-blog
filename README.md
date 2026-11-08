@@ -85,6 +85,7 @@ gone auction inventory.
 | 5 | `contentFooter` | End of article, before related reads | Fulfills readers, better targeting |
 | 6 | `inFeed` | Between homepage card rows | In-stream for browse-level sessions |
 | 7 | `404.html` | Top banner | Even error paths monetize |
+| 8 | A-ADS sticky overlay | Fixed top overlay, all pages (`assets/js/aads-sticky.js`) | Crypto-network banner (unit 2461362, pays BTC by impression share) with site-wide switch |
 
 Built-in protections that keep RPM high rather than eroding it:
 
@@ -120,6 +121,23 @@ Traffic × RPM = Earnings. RPM help is laid out above; traffic loop:
 2. **Internal links**: every new post ships linked from `index.html` (crawl paths).
 3. One post per week beats ten posts once — crawl cadence learns and follows.
 4. Watch Core Web Vitals in Search Console; the theme is already green by design.
+
+## A-ADS note (the sticky overlay network)
+
+The sticky top banner is powered by **A-ADS unit 2461362** (`a-ads.com`,
+crypto/Bitcoin network, impression-share payouts — not IAB programmatic, so it
+does *not* go in `ads.txt`).
+
+- **Kill switch**: `assets/js/aads-sticky.js` → `AADS_CONFIG.enabled = false`
+  removes it site-wide without touching a single template.
+- ⚠️ **Before applying to Google AdSense**, disable it. A crypto-network
+  overlay during AdSense review is an avoidable approval risk; you can
+  re-enable after approval if you want to run both (Google's crypto rules
+  constrain only its own inventory).
+- The close (X) sits over the sticky header on small screens; if it crowds
+  your header, move the inner container from `top:0` to the header height.
+- The network sets its own cookies inside the iframe. If you keep it long
+  term, add it under "Third-party services" in `privacy.html`.
 
 ## 6. Honest limitations (read once)
 
